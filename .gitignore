@@ -1,0 +1,12 @@
+# Mac
+.DS_Store
+
+# Visual Studio Code
+.vscode/
+
+# Node
+node_modules/
+npm-debug.log
+
+# Webpack
+pack/js/

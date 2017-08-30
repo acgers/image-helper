@@ -1,0 +1,30 @@
+language: node_js
+
+node_js:
+  - node # latest stable Node.js release
+
+sudo: false
+dist: trusty
+group: edge
+
+install:
+  - npm i
+
+script:
+  - npm run pack
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
+
+deploy:
+  - provider: releases
+    skip_cleanup: true
+    api_key:
+      secure:
+    file:
+      - dist/*.crx
+    on:
+      tags: true
+      repo: acgers/bcy-origin

@@ -1,0 +1,38 @@
+{
+  "extName": {
+    "message": "bcy, Download Original Image",
+    "description": "Extension: Name"
+  },
+  "extShortName": {
+    "message": "bcy-origin",
+    "description": "Extension: Short Name"
+  },
+  "extDescription": {
+    "message": "Save origin image from bcy.net",
+    "description": "Extension: Description"
+  },
+  "bcyNavText": {
+    "message": "Go to bcy.net",
+    "description": "Popup Button: go_bcy"
+  },
+  "myBcyFavorite": {
+    "message": "My Favorite",
+    "description": "Popup Button: go_bcy_favorite"
+  },
+  "notLogged": {
+    "message": " (Please Login)",
+    "description": "Popup Button: not_logged"
+  },
+  "saveOrgBtn": {
+    "message": "Save origin picture",
+    "description": "Context Menu: save origin picture"
+  },
+  "ifSaveUnAuthPic": {
+    "message": "Do you want to save unauthorized picture",
+    "description": "Option Page: save unauthorized picture"
+  },
+  "optionsSaveBtn": {
+    "message": "save",
+    "description": "Option Page: save options"
+  }
+}

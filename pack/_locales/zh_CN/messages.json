@@ -1,0 +1,38 @@
+{
+  "extName": {
+    "message": "保存半次元原图",
+    "description": "Extension: Name"
+  },
+  "extShortName": {
+    "message": "保存半次元原图",
+    "description": "Extension: Short Name"
+  },
+  "extDescription": {
+    "message": "保存半次元原始大小的图片",
+    "description": "Extension: Description"
+  },
+  "bcyNavText": {
+    "message": "一键前往半次元",
+    "description": "Popup Button: go_bcy"
+  },
+  "myBcyFavorite": {
+    "message": "我的关注",
+    "description": "Popup Button: go_bcy_favorite"
+  },
+  "notLogged": {
+    "message": "(未登录)",
+    "description": "Popup Button: not_logged"
+  },
+  "saveOrgBtn": {
+    "message": "保存原图",
+    "description": "Context Menu: save origin picture"
+  },
+  "ifSaveUnAuthPic": {
+    "message": "是否要保存作者未授权的图片",
+    "description": "Option Page: save unauthorized picture"
+  },
+  "optionsSaveBtn": {
+    "message": "保存",
+    "description": "Option Page: save options"
+  }
+}

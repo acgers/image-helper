@@ -1,0 +1,39 @@
+{
+  "name": "byc-helper",
+  "author": "wangxufire <wangxufire@gmail.com>",
+  "license": "GPL-3.0",
+  "main": "gulpfile.js",
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "build": "./node_modules/.bin/gulp build",
+    "crx": "./node_modules/.bin/gulp crx",
+    "pack": "./node_modules/.bin/gulp zip",
+    "clean": "./node_modules/.bin/gulp clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wangxufire/byc-origin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wangxufire/byc-origin/issues"
+  },
+  "dependencies": {
+    "jquery": "~3.2.1"
+  },
+  "devDependencies": {
+    "@types/chrome": "~0.0.47",
+    "@types/jquery": "~3.2.10",
+    "ts-loader": "~2.3.2",
+    "typescript": "^2.4.2",
+    "webpack": "^3.4.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "~0.3.2",
+    "gulp-crx-pack": "~1.0.1",
+    "gulp-zip": "~4.0.0"
+  },
+  "engines": {
+    "node": ">= 8.2.1",
+    "npm": ">= 5.3.0"
+  }
+}
