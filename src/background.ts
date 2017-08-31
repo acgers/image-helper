@@ -14,10 +14,10 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === 'm_pic_bcy_origin') {
     chrome.tabs.query({ active: true, currentWindow: true }, result => {
       result.map((v, i) => {
-        chrome.tabs.sendMessage(v.id, { type: 'C_SAVE', info: info, tab: tab }, response => {
-          let durl: string = response.durl
+        chrome.tabs.sendMessage(v.id, { type: 'C_SAVE', info, tab }, response => {
+          const durl: string = response.durl
           chrome.downloads.download({ url: durl }, downloadId => {
-            if (downloadId == null) {
+            if (downloadId === undefined) {
               console.error(`download ${durl} failed.`)
             }
           })

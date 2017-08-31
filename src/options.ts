@@ -4,23 +4,23 @@ import * as $ from 'jquery'
 
 $(() => {
   const restoreOptions = (fn: (settings) => Promise<{ ifSaveUnAuthPic }>): void => {
-    var ifSaveUnAuthPic: boolean = false
+    const ifSaveUnAuthPic = false
     chrome.storage.sync.get({ ifSaveUnAuthPic: false }, items => {
       fn(items).then(settings => {
-        let { ifSaveUnAuthPic } = settings
-        let allowSaveUnAuth = <HTMLInputElement>$('#allow-un-auth')[0]
+        const { ifSaveUnAuthPic } = settings
+        const allowSaveUnAuth = <HTMLInputElement>$('#allow-un-auth')[0]
         allowSaveUnAuth.checked = !!ifSaveUnAuthPic
       })
     })
   }
 
   const saveOptions = () => {
-    let allowSaveUnAuth = <HTMLInputElement>$('#allow-un-auth')[0]
+    const allowSaveUnAuth = <HTMLInputElement>$('#allow-un-auth')[0]
     chrome.storage.sync.set({
       ifSaveUnAuthPic: allowSaveUnAuth.checked
     }, () => {
-      console.log('saved')
       window.close()
+      console.log('saved')
     })
   }
 

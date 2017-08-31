@@ -3,7 +3,7 @@
 import * as $ from 'jquery'
 
 $(() => {
-  let bkgPage: Window | null = chrome.extension.getBackgroundPage()
+  const bkgPage: Window | null = chrome.extension.getBackgroundPage()
 
   $('#bcy-nav').html(chrome.i18n.getMessage('bcyNavText'))
   $('#bcy-favorite').html(chrome.i18n.getMessage('myBcyFavorite'))

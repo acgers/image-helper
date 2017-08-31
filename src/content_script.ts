@@ -4,41 +4,41 @@ let performFix = (fn: (saveUnAuthPicEnabled: boolean) => Promise<boolean>): void
   chrome.storage.sync.get('ifSaveUnAuthPic', items => {
     fn(items['ifSaveUnAuthPic']).then(saveUnAuthPicEnabled => {
       if (saveUnAuthPicEnabled) {
-        let allowCut = e => {
-          e.stopImmediatePropagation();
-          return true;
+        const allowCut = e => {
+          e.stopImmediatePropagation()
+          return true
         }
-        let allowCopy = e => {
-          e.stopImmediatePropagation();
-          return true;
+        const allowCopy = e => {
+          e.stopImmediatePropagation()
+          return true
         }
-        let allowPaste = e => {
-          e.stopImmediatePropagation();
-          return true;
+        const allowPaste = e => {
+          e.stopImmediatePropagation()
+          return true
         }
-        let allowContextMenu = e => {
-          e.stopImmediatePropagation();
-          return true;
+        const allowContextMenu = e => {
+          e.stopImmediatePropagation()
+          return true
         }
-        let allowDragStart = e => {
-          e.stopImmediatePropagation();
-          return true;
+        const allowDragStart = e => {
+          e.stopImmediatePropagation()
+          return true
         }
-        let allowDrag = e => {
-          e.stopImmediatePropagation();
-          return true;
+        const allowDrag = e => {
+          e.stopImmediatePropagation()
+          return true
         }
-        let allowDrop = e => {
-          e.stopImmediatePropagation();
-          return true;
+        const allowDrop = e => {
+          e.stopImmediatePropagation()
+          return true
         }
-        let allowMouseDown = e => {
-          e.stopImmediatePropagation();
-          return true;
+        const allowMouseDown = e => {
+          e.stopImmediatePropagation()
+          return true
         }
-        let allowSelectStart = e => {
-          e.stopImmediatePropagation();
-          return true;
+        const allowSelectStart = e => {
+          e.stopImmediatePropagation()
+          return true
         }
 
         document.addEventListener('contextmenu', allowContextMenu, true)
@@ -55,13 +55,15 @@ let performFix = (fn: (saveUnAuthPicEnabled: boolean) => Promise<boolean>): void
       chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         switch (request.type) {
           case 'C_SAVE':
-            let selectInfo: chrome.contextMenus.OnClickData = request.info
-            let imgSrc: string = selectInfo.srcUrl!
-            console.log(`info: ${JSON.stringify(request.info)}`);
-            console.log(`tab: ${JSON.stringify(request.tab)}`); 1
-            let durl: string = imgSrc.substring(0, imgSrc.lastIndexOf('/'))
+            const selectInfo: chrome.contextMenus.OnClickData = request.info
+            const imgSrc: string = selectInfo.srcUrl!
+            console.log(`info: ${JSON.stringify(request.info)}`)
+            console.log(`tab: ${JSON.stringify(request.tab)}`)
+            const durl: string = imgSrc.substring(0, imgSrc.lastIndexOf('/'))
             console.log(`durl: ${durl}`)
-            sendResponse({ durl: durl })
+            if (isImg(durl)) {
+              sendResponse({ durl })
+            }
             break
           default: break
         }
@@ -71,3 +73,8 @@ let performFix = (fn: (saveUnAuthPicEnabled: boolean) => Promise<boolean>): void
 }
 
 performFix(async saveUnAuthPicEnabled => { return saveUnAuthPicEnabled })
+
+const isImg: (string) => boolean = (imgurl: string) => {
+  const suffix = imgurl.substring(imgurl.lastIndexOf('.'), imgurl.length)
+  return /\.(gif|jpg|jpeg|png|apng|webp|bmp|tiff|svg|exif|wmf)$/.test(suffix.toLowerCase())
+}
