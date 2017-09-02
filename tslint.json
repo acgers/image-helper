@@ -1,406 +1,278 @@
 {
-  "rulesDirectory": [
-    "build/lib/tslint"
-  ],
   "rules": {
-    "no-string-throw": true,
-    "no-unused-expression": true,
-    "no-duplicate-variable": true,
-    "no-unused-variable": true,
-    "curly": true,
+    "array-type": [
+      true,
+      "array-simple"
+    ],
+    "arrow-parens": false,
+    "await-promise": true,
+    "ban": true,
+    "ban-types": true,
+    "binary-expression-operand-order": true,
+    "callable-types": true,
     "class-name": true,
+    "comment-format": [
+      true,
+      "check-space"
+    ],
+    "curly": [
+      true,
+      "ignore-same-line"
+    ],
+    "deprecation": true,
+    "encoding": true,
+    "eofline": true,
+    "indent": [
+      true,
+      "spaces"
+    ],
+    "jsdoc-format": true,
+    "linebreak-style": [
+      true,
+      "LF"
+    ],
+    "member-access": [
+      "check-accessor",
+      "check-constructor"
+    ],
+    "new-parens": true,
+    "no-boolean-literal-compare": true,
+    "no-construct": true,
+    "no-duplicate-imports": true,
+    "no-duplicate-super": true,
+    "no-empty": true,
+    "no-eval": true,
+    "no-for-in-array": true,
+    "no-internal-module": true,
+    "no-inferrable-types": true,
+    "no-import-side-effect": true,
+    "no-invalid-template-strings": true,
+    "no-invalid-this": true,
+    "no-magic-numbers": [
+      true
+    ],
+    "no-mergeable-namespace": true,
+    "no-misused-new": true,
+    "no-non-null-assertion": true,
+    "no-object-literal-type-assertion": true,
+    "no-null-keyword": false,
+    "no-this-assignment": true,
+    "no-unnecessary-callback-wrapper": true,
+    "no-unnecessary-initializer": true,
+    "no-unnecessary-qualifier": true,
+    "no-unnecessary-type-assertion": true,
+    "no-use-before-declare": false,
+    "no-unsafe-any": true,
+    "no-unused-expression": [
+      "allow-fast-null-checks",
+      "allow-tagged-template"
+    ],
+    "no-unsafe-finally": true,
+    "no-unused-variable": [
+      true,
+      {
+        "ignore-pattern": "^_"
+      }
+    ],
+    "no-switch-case-fall-through": true,
+    "no-trailing-whitespace": [
+      true,
+      "ignore-template-strings"
+    ],
+    "no-var-keyword": true,
+    "number-literal-format": true,
+    "object-literal-shorthand": true,
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-whitespace"
+    ],
+    "ordered-imports": true,
+    "prefer-conditional-expression": true,
+    "prefer-const": true,
+    "prefer-function-over-method": true,
+    "prefer-method-signature": true,
+    "prefer-object-spread": true,
+    "prefer-for-of": true,
+    "prefer-template": true,
+    "promise-function-async": true,
+    "quotemark": [
+      true,
+      "single",
+      "avoid-escape"
+    ],
+    "radix": true,
+    "restrict-plus-operands": true,
+    "return-undefined": true,
     "semicolon": [
-      "always"
+      true,
+      "never"
     ],
-    "triple-equals": true,
-    "no-unexternalized-strings": [
+    "strict-boolean-expressions": true,
+    "switch-default": true,
+    "strict-type-predicates": true,
+    "trailing-comma": [
       true,
       {
-        "signatures": [
-          "localize",
-          "nls.localize"
-        ],
-        "keyIndex": 0,
-        "messageIndex": 1
+        "multiline": "never",
+        "singleline": "never"
       }
     ],
-    "layering": [
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
+    "typedef": [
+      "array-destructuring",
+      "call-signature",
+      "member-variable-declaration",
+      "object-destructuring",
+      "parameter",
+      "property-declaration",
+      "variable-declaration"
+    ],
+    "typedef-whitespace": [
       true,
       {
-        "common": [],
-        "node": [
-          "common"
-        ],
-        "browser": [
-          "common"
-        ],
-        "electron-main": [
-          "common",
-          "node"
-        ],
-        "electron-browser": [
-          "common",
-          "browser",
-          "node"
-        ]
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      },
+      {
+        "call-signature": "onespace",
+        "index-signature": "onespace",
+        "parameter": "onespace",
+        "property-declaration": "onespace",
+        "variable-declaration": "onespace"
       }
     ],
-    "import-patterns": [
+    "typeof-compare": true,
+    "unified-signatures": true,
+    "use-default-type-parameter": true,
+    "use-isnan": true,
+    "variable-name": [
       true,
-      // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      // !!! Do not relax these rules !!!
-      // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      "ban-keywords",
+      "allow-leading-underscore",
+      "allow-trailing-underscore"
+    ],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-module",
+      "check-separator",
+      "check-type"
+    ]
+  },
+  "jsRules": {
+    "arrow-parens": false,
+    "ban": true,
+    "binary-expression-operand-order": true,
+    "class-name": true,
+    "comment-format": [
+      true,
+      "check-space"
+    ],
+    "curly": [
+      true,
+      "ignore-same-line"
+    ],
+    "deprecation": true,
+    "encoding": true,
+    "eofline": true,
+    "indent": [
+      true,
+      "spaces"
+    ],
+    "jsdoc-format": true,
+    "linebreak-style": [
+      true,
+      "LF"
+    ],
+    "new-parens": true,
+    "no-construct": true,
+    "no-duplicate-super": true,
+    "no-empty": true,
+    "no-eval": true,
+    "no-for-in-array": true,
+    "no-import-side-effect": true,
+    "no-invalid-template-strings": true,
+    "no-invalid-this": true,
+    "no-magic-numbers": [
+      true
+    ],
+    "no-null-keyword": false,
+    "no-unnecessary-callback-wrapper": true,
+    "no-unnecessary-initializer": true,
+    "no-use-before-declare": false,
+    "no-unused-expression": true,
+    "no-unsafe-finally": true,
+    "no-switch-case-fall-through": true,
+    "no-trailing-whitespace": true,
+    "no-var-keyword": true,
+    "number-literal-format": true,
+    "object-literal-shorthand": true,
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-whitespace"
+    ],
+    "ordered-imports": [
+      true
+    ],
+    "prefer-conditional-expression": true,
+    "prefer-const": true,
+    "prefer-function-over-method": true,
+    "prefer-method-signature": true,
+    "prefer-object-spread": true,
+    "prefer-for-of": true,
+    "prefer-template": true,
+    "promise-function-async": true,
+    "quotemark": [
+      true,
+      "single",
+      "avoid-escape"
+    ],
+    "radix": true,
+    "restrict-plus-operands": true,
+    "return-undefined": true,
+    "semicolon": [
+      true,
+      "never"
+    ],
+    "switch-default": true,
+    "trailing-comma": [
+      true,
       {
-        // vs/base/common cannot depend on anything else
-        "target": "**/vs/base/common/**",
-        "restrictions": [
-          "vs/nls",
-          "**/vs/base/common/**"
-        ]
-      },
-      {
-        // vs/base/test/common contains tests for vs/base/common
-        "target": "**/vs/base/test/common/**",
-        "restrictions": [
-          "assert",
-          "vs/nls",
-          "**/vs/base/common/**",
-          "**/vs/base/test/common/**"
-        ]
-      },
-      {
-        // vs/base/browser can only depend on vs/base/common
-        "target": "**/vs/base/browser/**",
-        "restrictions": [
-          "vs/nls",
-          "vs/css!./**/*",
-          "**/vs/base/{common,browser}/**"
-        ]
-      },
-      {
-        // vs/base/test/browser contains tests for vs/base/browser
-        "target": "**/vs/base/test/browser/**",
-        "restrictions": [
-          "assert",
-          "vs/nls",
-          "**/vs/base/{common,browser}/**",
-          "**/vs/base/test/{common,browser}/**"
-        ]
-      },
-      {
-        "target": "**/vs/base/parts/*/common/**",
-        "restrictions": [
-          "vs/nls",
-          "**/vs/base/common/**",
-          "**/vs/base/parts/*/common/**"
-        ]
-      },
-      {
-        "target": "**/vs/base/parts/*/browser/**",
-        "restrictions": [
-          "vs/nls",
-          "vs/css!./**/*",
-          "**/vs/base/{common,browser}/**",
-          "**/vs/base/parts/*/{common,browser}/**"
-        ]
-      },
-      {
-        "target": "**/vs/platform/*/common/**",
-        "restrictions": [
-          "vs/nls",
-          "**/vs/base/common/**",
-          "**/vs/base/parts/*/common/**",
-          "**/vs/platform/*/common/**"
-        ]
-      },
-      {
-        "target": "**/vs/platform/*/test/common/**",
-        "restrictions": [
-          "assert",
-          "sinon",
-          "vs/nls",
-          "**/vs/base/common/**",
-          "**/vs/platform/*/common/**",
-          "**/vs/platform/*/test/common/**"
-        ]
-      },
-      {
-        "target": "**/vs/platform/*/browser/**",
-        "restrictions": [
-          "vs/nls",
-          "vs/css!./**/*",
-          "**/vs/base/{common,browser}/**",
-          "**/vs/base/parts/*/{common,browser}/**",
-          "**/vs/platform/*/{common,browser}/**"
-        ]
-      },
-      {
-        "target": "**/vs/platform/*/test/browser/**",
-        "restrictions": [
-          "assert",
-          "sinon",
-          "vs/nls",
-          "**/vs/base/{common,browser}/**",
-          "**/vs/platform/*/{common,browser}/**",
-          "**/vs/platform/*/test/{common,browser}/**"
-        ]
-      },
-      {
-        "target": "**/vs/editor/common/**",
-        "restrictions": [
-          "vs/nls",
-          "**/vs/base/common/**",
-          "**/vs/base/worker/**",
-          "**/vs/platform/*/common/**",
-          "**/vs/editor/common/**"
-        ]
-      },
-      {
-        "target": "**/vs/editor/test/common/**",
-        "restrictions": [
-          "assert",
-          "vs/nls",
-          "**/vs/base/common/**",
-          "**/vs/platform/*/common/**",
-          "**/vs/platform/*/test/common/**",
-          "**/vs/editor/common/**",
-          "**/vs/editor/test/common/**"
-        ]
-      },
-      {
-        "target": "**/vs/editor/browser/**",
-        "restrictions": [
-          "vs/nls",
-          "vs/css!./**/*",
-          "**/vs/base/{common,browser}/**",
-          "**/vs/platform/*/{common,browser}/**",
-          "**/vs/editor/{common,browser}/**"
-        ]
-      },
-      {
-        "target": "**/vs/editor/test/browser/**",
-        "restrictions": [
-          "assert",
-          "vs/nls",
-          "**/vs/base/{common,browser}/**",
-          "**/vs/platform/*/{common,browser}/**",
-          "**/vs/platform/*/test/{common,browser}/**",
-          "**/vs/editor/{common,browser}/**",
-          "**/vs/editor/test/{common,browser}/**"
-        ]
-      },
-      {
-        "target": "**/vs/editor/standalone/common/**",
-        "restrictions": [
-          "vs/nls",
-          "**/vs/base/common/**",
-          "**/vs/platform/*/common/**",
-          "**/vs/editor/common/**",
-          "**/vs/editor/standalone/common/**"
-        ]
-      },
-      {
-        "target": "**/vs/editor/standalone/test/common/**",
-        "restrictions": [
-          "assert",
-          "vs/nls",
-          "**/vs/base/common/**",
-          "**/vs/platform/*/common/**",
-          "**/vs/platform/*/test/common/**",
-          "**/vs/editor/common/**",
-          "**/vs/editor/test/common/**"
-        ]
-      },
-      {
-        "target": "**/vs/editor/standalone/browser/**",
-        "restrictions": [
-          "vs/nls",
-          "vs/css!./**/*",
-          "**/vs/base/{common,browser}/**",
-          "**/vs/base/parts/*/{common,browser}/**",
-          "**/vs/platform/*/{common,browser}/**",
-          "**/vs/editor/{common,browser}/**",
-          "**/vs/editor/contrib/**",
-          "**/vs/editor/standalone/{common,browser}/**"
-        ]
-      },
-      {
-        "target": "**/vs/editor/standalone/test/browser/**",
-        "restrictions": [
-          "assert",
-          "vs/nls",
-          "**/vs/base/{common,browser}/**",
-          "**/vs/platform/*/{common,browser}/**",
-          "**/vs/platform/*/test/{common,browser}/**",
-          "**/vs/editor/{common,browser}/**",
-          "**/vs/editor/standalone/{common,browser}/**",
-          "**/vs/editor/test/{common,browser}/**"
-        ]
-      },
-      {
-        "target": "**/vs/editor/contrib/*/test/**",
-        "restrictions": [
-          "assert",
-          "vs/nls",
-          "**/vs/base/{common,browser}/**",
-          "**/vs/base/test/{common,browser}/**",
-          "**/vs/base/parts/*/{common,browser}/**",
-          "**/vs/platform/*/{common,browser}/**",
-          "**/vs/platform/*/test/{common,browser}/**",
-          "**/vs/editor/{common,browser}/**",
-          "**/vs/editor/test/{common,browser}/**",
-          "**/vs/editor/contrib/**"
-        ]
-      },
-      {
-        "target": "**/vs/editor/contrib/**",
-        "restrictions": [
-          "vs/nls",
-          "vs/css!./**/*",
-          "**/vs/base/{common,browser}/**",
-          "**/vs/base/parts/*/{common,browser}/**",
-          "**/vs/platform/*/{common,browser}/**",
-          "**/vs/editor/{common,browser}/**",
-          "**/vs/editor/contrib/**"
-        ]
-      },
-      {
-        "target": "**/vs/workbench/common/**",
-        "restrictions": [
-          "vs/nls",
-          "vs/css!./**/*",
-          "**/vs/base/common/**",
-          "**/vs/base/parts/*/common/**",
-          "**/vs/platform/*/common/**",
-          "**/vs/editor/common/**",
-          "**/vs/editor/contrib/*/common/**",
-          "**/vs/workbench/common/**",
-          "**/vs/workbench/services/*/common/**",
-          "assert"
-        ]
-      },
-      {
-        "target": "**/vs/workbench/browser/**",
-        "restrictions": [
-          "vs/nls",
-          "vs/css!./**/*",
-          "**/vs/base/{common,browser}/**",
-          "**/vs/base/parts/*/{common,browser}/**",
-          "**/vs/platform/*/{common,browser}/**",
-          "**/vs/editor/{common,browser}/**",
-          "**/vs/editor/contrib/*/{common,browser}/**",
-          "**/vs/workbench/{common,browser}/**",
-          "**/vs/workbench/services/*/{common,browser}/**",
-          "assert"
-        ]
-      },
-      {
-        "target": "**/vs/workbench/workbench.main.ts",
-        "restrictions": [
-          "**"
-        ]
-      },
-      {
-        "target": "**/vs/workbench/electron-browser/**",
-        "restrictions": [
-          "vs/nls",
-          "vs/css!./**/*",
-          "**/vs/base/{common,browser,node,electron-browser}/**",
-          "**/vs/base/parts/*/{common,browser,node,electron-browser}/**",
-          "**/vs/platform/node/**",
-          "**/vs/platform/*/{common,browser,node,electron-browser}/**",
-          "**/vs/editor/{common,browser,node,electron-browser}/**",
-          "**/vs/editor/contrib/*/{common,browser,node,electron-browser}/**",
-          "**/vs/workbench/{common,browser,node,electron-browser,api}/**",
-          "**/vs/workbench/services/*/{common,browser,node,electron-browser}/**",
-          "*" // node modules
-        ]
-      },
-      {
-        "target": "**/vs/workbench/node/**",
-        "restrictions": [
-          "vs/nls",
-          "vs/css!./**/*",
-          "**/vs/base/{common,node}/**",
-          "**/vs/base/parts/*/{common,node}/**",
-          "**/vs/platform/node/**",
-          "**/vs/platform/*/{common,node}/**",
-          "**/vs/editor/{common,node}/**",
-          "**/vs/editor/contrib/*/{common,node}/**",
-          "**/vs/workbench/{common,node,api}/**",
-          "**/vs/workbench/services/*/{common,node}/**",
-          "*" // node modules
-        ]
-      },
-      {
-        "target": "**/vs/workbench/services/**/test/**",
-        "restrictions": [
-          "vs/nls",
-          "vs/css!./**/*",
-          "**/vs/base/**",
-          "**/vs/platform/**",
-          "**/vs/editor/**",
-          "**/vs/workbench/{common,browser,node,electron-browser}/**",
-          "vs/workbench/parts/files/common/editors/fileEditorInput",
-          "**/vs/workbench/services/**",
-          "**/vs/workbench/test/**",
-          "*" // node modules
-        ]
-      },
-      {
-        "target": "**/vs/workbench/services/**",
-        "restrictions": [
-          "vs/nls",
-          "vs/css!./**/*",
-          "**/vs/base/**",
-          "**/vs/platform/**",
-          "**/vs/editor/**",
-          "**/vs/workbench/{common,browser,node,electron-browser}/**",
-          "**/vs/workbench/services/**",
-          "*" // node modules
-        ]
-      },
-      {
-        "target": "**/vs/code/**",
-        "restrictions": [
-          "vs/nls",
-          "**/vs/base/**",
-          "**/vs/platform/**",
-          "**/vs/code/**",
-          "*" // node modules
-        ]
-      },
-      {
-        "target": "**/{node,electron-browser,electron-main,extensions}/**",
-        "restrictions": "**/*"
-      },
-      {
-        "target": "**/test/smoke/**",
-        "restrictions": [
-          "**/test/smoke/**",
-          "*"
-        ]
-      },
-      {
-        "target": "{**/**.test.ts,**/test/**}",
-        "restrictions": "{**/vs/**,assert,sinon}"
-      },
-      {
-        "target": "**/{common,browser,workbench}/**",
-        "restrictions": "**/vs/**"
+        "multiline": "never",
+        "singleline": "never"
       }
     ],
-    "duplicate-imports": true,
-    "allow-async": [
+    "triple-equals": [
       true,
-      [
-        "node",
-        "electron-main",
-        "electron-browser",
-        "extensions",
-        "smoke"
-      ]
+      "allow-null-check"
     ],
-    "translation-remind": true
-  }
+    "typeof-compare": true,
+    "use-isnan": true,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "allow-leading-underscore",
+      "allow-trailing-underscore"
+    ],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-module",
+      "check-separator",
+      "check-type"
+    ]
+  },
+  "defaultSeverity": "error"
 }

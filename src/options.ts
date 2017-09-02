@@ -2,30 +2,35 @@
 
 import * as $ from 'jquery'
 
+interface Settings {
+  ifSaveUnAuthPic: boolean
+}
+
+type UserSettings = (settings: Settings) => Promise<Settings>
+
 $(() => {
-  const restoreOptions = (fn: (settings) => Promise<{ ifSaveUnAuthPic }>): void => {
-    var ifSaveUnAuthPic: boolean = false
-    chrome.storage.sync.get({ ifSaveUnAuthPic: false }, items => {
-      fn(items).then(settings => {
-        let { ifSaveUnAuthPic } = settings
-        let allowSaveUnAuth = <HTMLInputElement>$('#allow-un-auth')[0]
-        allowSaveUnAuth.checked = !!ifSaveUnAuthPic
+  const restoreOptions = (fn: UserSettings): void => {
+    chrome.storage.sync.get(null, (items: { [key: string]: any }) => {
+      fn(<Settings>items).then((settings: Settings) => {
+        const { ifSaveUnAuthPic } = settings
+        const allowSaveUnAuth = <HTMLInputElement>$('#allow-un-auth')[0]
+        allowSaveUnAuth.checked = ifSaveUnAuthPic
       })
     })
   }
 
   const saveOptions = () => {
-    let allowSaveUnAuth = <HTMLInputElement>$('#allow-un-auth')[0]
+    const allowSaveUnAuth = <HTMLInputElement>$('#allow-un-auth')[0]
     chrome.storage.sync.set({
       ifSaveUnAuthPic: allowSaveUnAuth.checked
     }, () => {
-      console.log('saved')
       window.close()
+      console.log('saved')
     })
   }
 
   // document.addEventListener('DOMContentLoaded', restoreOptions);
-  restoreOptions(async settings => { return settings })
+  restoreOptions(async (settings: Settings) => { return settings })
 
   $('#save-un-auth-pic').text(chrome.i18n.getMessage('ifSaveUnAuthPic'))
   $('#save').text(chrome.i18n.getMessage('optionsSaveBtn'))
