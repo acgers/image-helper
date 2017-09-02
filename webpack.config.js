@@ -1,23 +1,34 @@
-const webpack = require('webpack')
-const path = require('path')
-const fs = require('fs')
+'use strict'
 
-const getEntry = () => {
-  let srcPath = path.resolve(process.cwd(), 'src')
-  let dirs = fs.readdirSync(srcPath)
-  let files = {}
-  dirs.forEach(function (item) {
-    let matchs = item.match(/(.+)\.ts$/)
-    if (!!matchs) {
-      files[matchs[1]] = path.resolve('src', item)
+const fs = require('fs')
+const path = require('path')
+const webpack = require('webpack')
+
+const getEntries = () => {
+  const dirEntries = (itemPath, files) => {
+    if (fs.statSync(itemPath).isDirectory()) {
+      fs.readdirSync(itemPath).forEach(item => {
+        dirEntries(path.resolve(itemPath, item), files)
+      })
+    } else {
+      const matchs = itemPath.match(/(.+)\.ts$/)
+      if (!!matchs) files[path.basename(itemPath, '.ts')] = itemPath
     }
+  }
+
+  const srcPath = path.resolve(process.cwd(), 'src')
+  const dirs = fs.readdirSync(srcPath)
+  const files = {}
+
+  dirs.forEach(item => {
+    dirEntries(path.resolve(srcPath, item), files)
   })
+
   return files
 }
 
 module.exports = {
-  // devtool: 'cheap-module-source-map',
-  entry: getEntry(),
+  entry: getEntries(),
   output: {
     path: path.join(__dirname, 'pack/js'),
     filename: '[name].js'
@@ -32,18 +43,15 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
+    modules: ['node_modules']
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      sourceMap: false,
-      minChunks: Infinity
-    }),
+    new webpack.IgnorePlugin(/\.git$/),
 
-    // new webpack.optimize.UglifyJsPlugin({
-    //   sourceMap: false,
-    //   comments: false
-    // })
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    })
   ]
 }

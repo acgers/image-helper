@@ -1,3 +1,5 @@
+'use strict'
+
 const gulp = require('gulp')
 const path = require('path')
 const fs = require('fs')
@@ -7,14 +9,19 @@ const tslint = require('tslint')
 const gTslint = require('gulp-tslint')
 const clean = require('gulp-clean')
 const webpack = require('webpack')
+const webpackMerge = require('webpack-merge')
 const crx = require('gulp-crx-pack')
 const zip = require('gulp-zip')
 
+let webpackConfig = require(path.resolve('webpack.config'))
+
 gulp.task('clean', () => gulp.src(['pack/js/', 'dist']).pipe(clean()))
 
-gulp.task('lint', () => gulp.src(['src/**/*.ts'], { base: '.' })
+gulp.task('lint', () => gulp.src(['src/**/*.ts'])
   .pipe(gTslint({
-    tslint: tslint,
+    fix: true,
+    tslint,
+    formatter: 'verbose',
     program: tslint.Linter.createProgram(path.resolve('tsconfig.json')),
     configuration: path.resolve('tslint.json')
   }))
@@ -32,20 +39,50 @@ gulp.task('fmt', () => {
       // verbose: true,
       tsfmt: true,
       tsfmtFile: path.resolve('tsfmt.json')
-    }).then(result => {
+    }).then((result) => {
       if (result.error) console.error(result.message)
       cb(null, file)
-    }, err => cb(err))
+    }, cb)
   })
   gulp.src(['src/**/*.ts'], { base: '.' }).pipe(formatting)
 })
 
-gulp.task('build', ['clean', 'fmt', 'lint'], done =>
-  webpack(require(path.resolve('webpack.config.js'))).run((err, stats) => {
+gulp.task('build:dev', ['clean', 'fmt', 'lint'], done => {
+  webpackConfig = webpackMerge(webpackConfig, {
+    devtool: 'source-map',
+    plugins: [
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        sourceMap: true,
+        minChunks: Infinity
+      })
+    ]
+  })
+  webpack(webpackConfig).run((err, stats) => {
     if (err) console.error(err)
     if (done) done()
   })
-)
+})
+
+gulp.task('build', ['clean', 'fmt', 'lint'], done => {
+  webpackConfig = webpackMerge(webpackConfig, {
+    plugins: [
+      new webpack.optimize.UglifyJsPlugin({
+        sourceMap: false,
+        comments: false
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        sourceMap: false,
+        minChunks: Infinity
+      })
+    ]
+  })
+  webpack(webpackConfig).run((err, stats) => {
+    if (err) console.error(err)
+    if (done) done()
+  })
+})
 
 gulp.task('crx', ['build'], () => gulp.src(path.resolve('pack'))
   .pipe(crx({

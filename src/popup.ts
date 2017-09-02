@@ -8,17 +8,15 @@ $(() => {
   $('#bcy-nav').html(chrome.i18n.getMessage('bcyNavText'))
   $('#bcy-favorite').html(chrome.i18n.getMessage('myBcyFavorite'))
 
-  $('#bcy-nav').on('click', () => {
-    window.open('https://bcy.net', '_blank')
-  })
+  $('#bcy-nav').on('click', () => window.open('https://bcy.net', '_blank'))
 
   const setDynamicText = (): void => {
-    if (bkgPage) {
+    if (bkgPage !== null) {
       bkgPage.chrome.cookies.getAll({
         path: '/',
         domain: '.bcy.net',
-        name: 'LOGGED_USER',
-      }, cookies => {
+        name: 'LOGGED_USER'
+      }, (cookies: chrome.cookies.Cookie[]) => {
         console.log(cookies)
         if (cookies.length === 0) {
           $('#bcy-favorite').html(chrome.i18n.getMessage('myBcyFavorite')

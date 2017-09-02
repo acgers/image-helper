@@ -1,42 +1,34 @@
 'use strict'
 
-let performFix = (fn: (saveUnAuthPicEnabled: boolean) => Promise<boolean>): void => {
-  chrome.storage.sync.get('ifSaveUnAuthPic', items => {
-    fn(items['ifSaveUnAuthPic']).then(saveUnAuthPicEnabled => {
+type EnableSaveUnAuthPic = (saveUnAuthPicEnabled: boolean) => Promise<boolean>
+type ContextEvent = (e: Event) => boolean
+type UrlCheck = (url: string) => boolean
+
+const performFix = (fn: EnableSaveUnAuthPic): void => {
+  chrome.storage.sync.get('ifSaveUnAuthPic', (items: { [key: string]: any }) => {
+    fn(items['ifSaveUnAuthPic'] as boolean).then((saveUnAuthPicEnabled: boolean) => {
       if (saveUnAuthPicEnabled) {
-        const allowCut = e => {
+        const allowContextMenu: ContextEvent = (e) => {
           e.stopImmediatePropagation()
           return true
         }
-        const allowCopy = e => {
+        const allowMouseDown: ContextEvent = (e) => {
           e.stopImmediatePropagation()
           return true
         }
-        const allowPaste = e => {
+        const allowSelectStart: ContextEvent = (e) => {
           e.stopImmediatePropagation()
           return true
         }
-        const allowContextMenu = e => {
+        const allowCut: ContextEvent = (e) => {
           e.stopImmediatePropagation()
           return true
         }
-        const allowDragStart = e => {
+        const allowCopy: ContextEvent = (e) => {
           e.stopImmediatePropagation()
           return true
         }
-        const allowDrag = e => {
-          e.stopImmediatePropagation()
-          return true
-        }
-        const allowDrop = e => {
-          e.stopImmediatePropagation()
-          return true
-        }
-        const allowMouseDown = e => {
-          e.stopImmediatePropagation()
-          return true
-        }
-        const allowSelectStart = e => {
+        const allowPaste: ContextEvent = (e) => {
           e.stopImmediatePropagation()
           return true
         }
@@ -45,24 +37,26 @@ let performFix = (fn: (saveUnAuthPicEnabled: boolean) => Promise<boolean>): void
         document.addEventListener('mousedown', allowMouseDown, true)
         document.addEventListener('selectstart', allowSelectStart, true)
 
-        // document.addEventListener('cut', allowCut, true)
-        // document.addEventListener('copy', allowCopy, true)
-        // document.addEventListener('paste', allowPaste, true)
-        // document.addEventListener('dragstart', allowDragStart, true)
-        // document.addEventListener('drag', allowDrag, true)
-        // document.addEventListener('drop', allowDrop, true)
+        document.addEventListener('cut', allowCut, true)
+        document.addEventListener('copy', allowCopy, true)
+        document.addEventListener('paste', allowPaste, true)
       }
       chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-        switch (request.type) {
+        const message = request as Message
+        switch (message.type) {
           case 'C_SAVE':
-            const selectInfo: chrome.contextMenus.OnClickData = request.info
-            const imgSrc: string = selectInfo.srcUrl!
-            console.log(`info: ${JSON.stringify(request.info)}`)
-            console.log(`tab: ${JSON.stringify(request.tab)}`)
-            const durl: string = imgSrc.substring(0, imgSrc.lastIndexOf('/'))
-            console.log(`durl: ${durl}`)
-            if (isImg(durl)) {
-              sendResponse({ durl })
+            const imgmsg: SaveImageMessage = request as SaveImageMessage
+            const selectInfo = imgmsg.info
+            const imgSrc: string | undefined = selectInfo.srcUrl
+            console.log(`info: ${JSON.stringify(imgmsg.info)}`)
+            console.log(`tab: ${JSON.stringify(imgmsg.tab)}`)
+            if (typeof imgSrc === 'string') {
+              const durl: string = imgSrc.substring(0, imgSrc.lastIndexOf('/'))
+              console.log(`durl: ${durl}`)
+              if (isImg(durl)) {
+                const response: ImageResponse = { durl }
+                sendResponse(response)
+              }
             }
             break
           default: break
@@ -72,9 +66,9 @@ let performFix = (fn: (saveUnAuthPicEnabled: boolean) => Promise<boolean>): void
   })
 }
 
-performFix(async saveUnAuthPicEnabled => { return saveUnAuthPicEnabled })
+performFix(async (saveUnAuthPicEnabled: boolean) => { return saveUnAuthPicEnabled })
 
-const isImg: (string) => boolean = (imgurl: string) => {
+const isImg: UrlCheck = (imgurl: string) => {
   const suffix = imgurl.substring(imgurl.lastIndexOf('.'), imgurl.length)
   return /\.(gif|jpg|jpeg|png|apng|webp|bmp|tiff|svg|exif|wmf)$/.test(suffix.toLowerCase())
 }

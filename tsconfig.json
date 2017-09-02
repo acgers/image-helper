@@ -1,29 +1,40 @@
+// http://www.typescriptlang.org/docs/handbook/compiler-options.html
 {
   "compilerOptions": {
+    "strict": true,
     "target": "es5",
     "module": "commonjs",
-    "alwaysStrict": true,
-    "sourceMap": true,
     "moduleResolution": "node",
+    "importHelpers": true,
+    "sourceMap": true,
     "rootDir": "src",
     "outDir": "pack/js",
-    "allowJs": true,
-    "declaration": false,
+    "diagnostics": true,
+    "declaration": true,
+    "declarationDir": "build",
+    "downlevelIteration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noEmitOnError": true,
-    "noImplicitAny": false,
-    "pretty": true,
+    "noImplicitReturns": true,
     "preserveConstEnums": true,
+    "newLine": "LF",
+    "pretty": true,
     "lib": [
-      "es2015",
-      "es2015.iterable",
-      "dom"
+      "dom",
+      "es5",
+      "es6",
+      "es7",
+      "es2016.array.include",
+      "es2017.object",
+      "es2017.sharedmemory",
+      "esnext",
+      "esnext.asynciterable"
     ]
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*.ts"
   ],
   "exclude": [
     "node_modules",

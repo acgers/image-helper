@@ -15,7 +15,7 @@ cache:
     - node_modules
 
 script:
-  - npm run pack
+  - npm run crx
 
 notifications:
   email:
