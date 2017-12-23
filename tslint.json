@@ -221,9 +221,7 @@
       "check-open-brace",
       "check-whitespace"
     ],
-    "ordered-imports": [
-      true
-    ],
+    "ordered-imports": true,
     "prefer-conditional-expression": true,
     "prefer-const": true,
     "prefer-function-over-method": true,

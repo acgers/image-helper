@@ -1,23 +1,31 @@
 {
   "extName": {
-    "message": "bcy, Download Original Image",
+    "message": "Download Original Image",
     "description": "Extension: Name"
   },
   "extShortName": {
-    "message": "bcy-origin",
+    "message": "Download Original Image",
     "description": "Extension: Short Name"
   },
   "extDescription": {
-    "message": "Save origin image from bcy.net",
+    "message": "Save origin image from bcy.net/lofter.com/diyidan.com/twitter.com",
     "description": "Extension: Description"
   },
   "bcyNavText": {
     "message": "Go to bcy.net",
     "description": "Popup Button: go_bcy"
   },
-  "myBcyFavorite": {
-    "message": "My Favorite",
-    "description": "Popup Button: go_bcy_favorite"
+  "lofterNavText": {
+    "message": "Go to lofter.com",
+    "description": "Popup Button: go_lofter"
+  },
+  "diyiNavText": {
+    "message": "Go to diyidan.com",
+    "description": "Popup Button: go_diyidan"
+  },
+  "twiNavText": {
+    "message": "Go to twitter.com",
+    "description": "Popup Button: go_twitter"
   },
   "notLogged": {
     "message": " (Please Login)",

@@ -2,7 +2,7 @@
 {
   "compilerOptions": {
     "strict": true,
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
     "importHelpers": true,
@@ -21,9 +21,11 @@
     "preserveConstEnums": true,
     "newLine": "LF",
     "pretty": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "lib": [
       "dom",
-      "es5",
       "es6",
       "es7",
       "es2016.array.include",

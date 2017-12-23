@@ -1,5 +1,5 @@
 {
-  "name": "bcy-helper",
+  "name": "image-helper",
   "author": "wangxufire <wangxufire@gmail.com>",
   "license": "GPL-3.0",
   "version": "0.0.0",
@@ -16,10 +16,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/acgers/bcy-helper.git"
+    "url": "https://github.com/acgers/image-helper.git"
   },
   "bugs": {
-    "url": "https://github.com/acgers/bcy-helper/issues"
+    "url": "https://github.com/acgers/image-helper/issues"
   },
   "dependencies": {
     "jquery": "~3.2.1"

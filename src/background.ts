@@ -1,6 +1,6 @@
 'use strict'
 
-type ImageResponse = { durl: string }
+type ImageResponse = { durl: string; name: string | undefined }
 
 chrome.contextMenus.create({
   id: 'm_pic_bcy_origin',
@@ -21,9 +21,17 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
           chrome.tabs.sendMessage(v.id, message, (response: any) => {
             const resp = response as ImageResponse
             const durl: string = resp.durl
-            chrome.downloads.download({ url: durl }, (downloadId: number) => {
-              console.log(`download id: ${downloadId} succeed.`)
-            })
+            const name: string | undefined = resp.name
+            if (name !== undefined) {
+              chrome.downloads.download({ url: durl, filename: name }, (downloadId: number) => {
+                console.log(`download ${downloadId}: succeed.`)
+              })
+            } else {
+              chrome.downloads.download({ url: durl }, (downloadId: number) => {
+                console.log(`download ${downloadId}: succeed.`)
+              })
+            }
+
           })
         }
       })
