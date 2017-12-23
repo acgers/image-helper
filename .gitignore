@@ -10,3 +10,6 @@ npm-debug.log
 
 # Webpack
 pack/js/
+
+# Build
+dist
