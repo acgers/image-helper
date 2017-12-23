@@ -36,10 +36,12 @@
     {
       "matches": [
         "*://bcy.net/*",
-        "*://lofter.com/*",
-        "*://diyidan.com/*",
+        "*://*.lofter.com/*",
+        "*://*.127.net/*",
+        "*://*.diyidan.com/*",
+        "*://*.diyidan.net/*",
         "*://twitter.com/*",
-        "*://twimg.com/*"
+        "*://*.twimg.com/*"
       ],
       "js": [
         "js/vendor.js",
@@ -50,10 +52,12 @@
   "background": {
     "matches": [
       "*://bcy.net/*",
-      "*://lofter.com/*",
-      "*://diyidan.com/*",
+      "*://*.lofter.com/*",
+      "*://*.127.net/*",
+      "*://*.diyidan.com/*",
+      "*://*.diyidan.net/*",
       "*://twitter.com/*",
-      "*://twimg.com/*"
+      "*://*.twimg.com/*"
     ],
     "persistent": false,
     "scripts": [
@@ -68,9 +72,11 @@
     "tabs",
     "downloads",
     "*://bcy.net/*",
-    "*://lofter.com/*",
-    "*://diyidan.com/*",
+    "*://*.lofter.com/*",
+    "*://*.127.net/*",
+    "*://*.diyidan.com/*",
+    "*://*.diyidan.net/*",
     "*://twitter.com/*",
-    "*://twimg.com/*"
+    "*://*.twimg.com/*"
   ]
 }
