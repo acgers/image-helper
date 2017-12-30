@@ -9,7 +9,7 @@ chrome.contextMenus.create({
   checked: false,
   // "all", "page", "frame", "selection", "link", "editable", "image",
   // "video", "audio", "launcher", "browser_action", or "page_action"
-  contexts: ['image', 'link']
+  contexts: ['page', 'image', 'link']
 })
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
