@@ -4,6 +4,8 @@ type EnableSaveUnAuthPic = (saveUnAuthPicEnabled: boolean) => Promise<boolean>
 type ContextEvent = (e: Event) => boolean
 type ImageUrlCheck = (url: string) => boolean
 
+const IMAGE_SUFIX_LENGTH = 5
+
 const performFix = (fn: EnableSaveUnAuthPic): void => {
   chrome.storage.sync.get('ifSaveUnAuthPic', (items: { [key: string]: any }) => {
     fn(items['ifSaveUnAuthPic'] as boolean).then((saveUnAuthPicEnabled: boolean) => {
@@ -89,6 +91,10 @@ const performFix = (fn: EnableSaveUnAuthPic): void => {
                   durl = durl.concat(':orig')
                   name = durl.substring(durl.lastIndexOf('/') + 1, durl.lastIndexOf(':'))
                 }
+
+                if (durl.endsWith('.image')) {
+                  durl = durl.substring(0, durl.length - IMAGE_SUFIX_LENGTH).concat('png')
+                }
                 const response: ImageResponse = { durl, name }
                 sendResponse(response)
               }
@@ -103,7 +109,7 @@ const performFix = (fn: EnableSaveUnAuthPic): void => {
 
 performFix(async (saveUnAuthPicEnabled: boolean) => { return saveUnAuthPicEnabled })
 
-const imgReg: RegExp = /\.(gif|jpg|jpeg|png|apng|webp|bmp|tiff|svg|exif|wmf)$/
+const imgReg: RegExp = /\.(image|gif|jpg|jpeg|png|apng|webp|bmp|tiff|svg|exif|wmf)$/
 
 const isImg: ImageUrlCheck = (imgurl: string) => {
   const suffix = imgurl.substring(imgurl.lastIndexOf('.'), imgurl.length)
