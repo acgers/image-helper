@@ -3,7 +3,7 @@
   "name": "__MSG_extName__",
   "short_name": "__MSG_extShortName__",
   "description": "__MSG_extDescription__",
-  "version": "0.12.30",
+  "version": "1.1.23",
   "author": "wangxufire <wangxufire+github@gmail.com>",
   "minimum_chrome_version": "50",
   "default_locale": "en",
