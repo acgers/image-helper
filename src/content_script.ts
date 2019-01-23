@@ -4,7 +4,7 @@ type EnableSaveUnAuthPic = (saveUnAuthPicEnabled: boolean) => Promise<boolean>
 type ContextEvent = (e: Event) => boolean
 type ImageUrlCheck = (url: string) => boolean
 
-const IMAGE_SUFIX_LENGTH = 5
+const IMAGE_THUMB_LENGTH = 26
 
 const performFix = (fn: EnableSaveUnAuthPic): void => {
   chrome.storage.sync.get('ifSaveUnAuthPic', (items: { [key: string]: any }) => {
@@ -92,8 +92,9 @@ const performFix = (fn: EnableSaveUnAuthPic): void => {
                   name = durl.substring(durl.lastIndexOf('/') + 1, durl.lastIndexOf(':'))
                 }
 
-                if (durl.endsWith('.image')) {
-                  durl = durl.substring(0, durl.length - IMAGE_SUFIX_LENGTH).concat('png')
+                if (durl.endsWith('tplv-banciyuan-w650.image')) {
+                  durl = durl.substring(0, durl.length - IMAGE_THUMB_LENGTH)
+                    .replace('p9-bcy.byteimg.com/img/banciyuan', 'img-bcy-qn.pstatp.com')
                 }
                 const response: ImageResponse = { durl, name }
                 sendResponse(response)
