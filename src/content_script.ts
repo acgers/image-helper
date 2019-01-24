@@ -93,8 +93,7 @@ const performFix = (fn: EnableSaveUnAuthPic): void => {
                 }
 
                 if (durl.endsWith('tplv-banciyuan-w650.image')) {
-                  durl = durl.substring(0, durl.length - IMAGE_THUMB_LENGTH)
-                    .replace('p9-bcy.byteimg.com/img/banciyuan', 'img-bcy-qn.pstatp.com')
+                  durl = `https://img-bcy-qn.pstatp.com${durl.substring(durl.indexOf('/user'), durl.length - IMAGE_THUMB_LENGTH)}`
                 }
                 const response: ImageResponse = { durl, name }
                 sendResponse(response)
